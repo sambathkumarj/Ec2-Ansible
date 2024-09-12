@@ -1,0 +1,26 @@
+---
+- name: Create EC2 instance
+  hosts: localhost
+  gather_facts: False
+  tasks:
+    - name: Launch EC2 instance
+      amazon.aws.ec2_instance:
+        key_name: "{{ key_name }}"
+        instance_type: "{{ instance_type }}"
+        image_id: "{{ ami_id }}"
+        region: "{{ region }}"
+        count: 1
+        vpc_subnet_id: "{{ subnet_id }}"  # Specify your subnet ID
+        security_group: "{{ security_group }}"  # Security group for SSH access
+        tags:
+          Name: "Ansible-Instance"
+          Environment: "Production"
+        state: present
+        wait: true
+        wait_timeout: 600
+      register: ec2
+
+    - name: Show EC2 instance details
+      debug:
+        var: ec2
+

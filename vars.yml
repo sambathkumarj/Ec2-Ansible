@@ -1,0 +1,6 @@
+key_name: "Ansible-Playbook"                                                 # Replace with your SSH key pair name
+instance_type: "t2.micro"                                                    # Specify the instance type
+ami_id: "ami-0474411b350de35fb"                                              # Replace with the AMI ID of your region
+region: "ap-southeast-2"                                                     # Specify the AWS region
+subnet_id: "subnet-053fd32f2556e7a23"                                        # Replace with your subnet ID
+security_group: "sg-0c48f554ef219fbb5"                                       # Replace with your security group ID
